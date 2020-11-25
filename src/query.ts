@@ -150,7 +150,7 @@ export class Query implements _ISchema, ISchema {
                             t = t.fork();
                             break;
                         default:
-                            throw NotSupported.never(p, 'statement type');
+                            throw new NotSupported('statement type');
                     }
                     last = last ?? {
                         command: p.type.toUpperCase(),
