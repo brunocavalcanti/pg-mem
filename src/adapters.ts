@@ -72,7 +72,7 @@ export class Adapters implements LibAdapters {
                 }
                 callback = typeof callback === 'function'
                     ? callback
-                    : valuesOrCallback;
+                    : null;
 
                 const pgquery = this.adaptQuery(query, values);
 
@@ -82,7 +82,7 @@ export class Adapters implements LibAdapters {
                         callback?.(null, result)
                         done(result);
                     } catch (e) {
-                        callback(e);
+                        callback?.(e);
                         err(e);
                     }
                 }, queryLatency ?? 0));
